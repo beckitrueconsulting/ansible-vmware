@@ -1,0 +1,45 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  user: remote
+  sudo: true
+
+  vars_prompt:
+    #- name: "vcenter_hostname"
+      #prompt: "Enter vcenter hostname"
+      #private: no
+      #default: "vcenter.server.domain"
+    #- name: "vcenter_user"
+      #prompt: "Enter vcenter username"
+      #private: no
+      #default: user
+    #- name: "vcenter_pass"
+      #prompt: "Enter vcenter password"
+      #private: yes
+    - name: datacenter
+      prompt: "Enter vcenter datacenter name"
+      private: no
+      default: datacenter
+    - name: prefix
+      prompt: "Enter 2 digit location id"
+      private: no
+      default: XX
+
+  vars:
+    esxi_host: "{{ prefix }}psasesx01.stationcasinos.net"
+    #datastore: "datastore"
+
+  tasks:
+    - vsphere_guest:
+        vcenter_hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        guest: "{{ prefix|upper}}{{ inventory_hostname }}"
+        from_template: yes
+        template_src: "{{ template }}"
+        resource_pool: "/Resources"
+        cluster: "{{ prefix|upper }} Cluster"
+        esxi:
+          datacenter: "{{ datacenter }}"
+          hostname: "{{ esxi_host }}"

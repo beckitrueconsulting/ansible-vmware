@@ -1,0 +1,25 @@
+#[web-vms]
+#ans-web[01:05] disk='10' datastore='SSD-Pool_ELKStack_dev (NAS01)' network='vSS-OpenStack_Default' memory='256' cpucount='1' osid='ubuntu64Guest'
+
+#[db-vms]
+
+#ans-db[01:03] disk='20' datastore='SSD-Pool_ELKStack_dev (NAS01)' network='vSS-OpenStack_Default' memory='1024' cpucount='2' osid='rhel6_64Guest'
+
+[ADI]
+ADI[1:2] disk='30' memory='4096' cpucount='2' osid='windows7Server64Guest' datastore='TS-SAS02' network='TS-VM' vm_hw_version='vmx-08' template='WIN2008R2DCSlots_TS'
+#[EZPay]
+#EZPay disk='30' memory='4096' cpucount ='2' osid='windows7Server64Guest'
+#[Intermec]
+#Intermec disk='30' memory='8192' cpucount ='2' osid='windows7Server64Guest'
+#[Service]
+#Service disk='40' memory='4096' cpucount ='2' osid='windows7Server64Guest'
+#[Doli]
+#DOLI disk='30' memory='3072' cpucount ='2' osid='windows7_64Guest'
+#[MDA]
+#MDA disk='40' memory='8192' cpucount ='2' osid='windows7Server64Guest'
+#[Trans]
+#Trans disk='40' memory='4096' cpucount ='2' osid='windows7Server64Guest'
+##[Config]
+#Config disk='30' memory='3072' cpucount ='2' osid='windows7_64Guest'
+
+
